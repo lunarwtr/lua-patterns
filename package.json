@@ -1,0 +1,27 @@
+{
+  "name": "@lunarwater/lua-patterns",
+  "version": "1.0.0",
+  "description": "Lua Pattern Javascript library.",
+  "keywords": [
+    "lua",
+    "parser",
+    "javascript",
+    "patterns"
+  ],
+  "homepage": "https://github.com/lunarwtr/lua-patterns",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/lunarwtr/lua-patterns.git"
+  },
+  "main": "lib/index.js",
+  "types": "index.d.ts",
+  "scripts": {
+  },
+  "engines": {
+    "node": ">=10.0.0"
+  },
+  "devDependencies": {
+  },
+  "license": "MIT",
+  "author": "lunarwtr"
+}

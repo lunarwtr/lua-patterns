@@ -1,0 +1,137 @@
+declare function MatchClass(char: any): boolean;
+declare function ReadQuantity(lex: any): void;
+declare function ReadEscape(lex: any): void;
+declare function ReadSet(lex: any): void;
+declare function PatternsLex(input: any): any[];
+declare function CheckQuantifier(par: any, parent: any): boolean;
+declare function MakeString(par: any): void;
+declare function MakeSet(par: any, parent: any): void;
+declare function PatternsParse(tokens: any): any[];
+declare function CreateDiv(type: any, parent: any, text: any, name: any, description: any): HTMLDivElement;
+declare function CleanBaseDiv(): void;
+declare function PatternsShow(nodes: any, parent: any): void;
+declare function PatternsPrint(input: any): void;
+declare const TOK: Readonly<{
+    START: 0;
+    END: 1;
+    ANY: 2;
+    ZEROORMORE: 3;
+    ONEORMORE: 4;
+    ZEROORMORELAZY: 5;
+    ZEROORONE: 6;
+    CHAR: 7;
+    LPAR: 8;
+    RPAR: 9;
+    ESCAPED: 10;
+    LBRACKET: 11;
+    RBRACKET: 12;
+    INVERSE: 13;
+    CLASS: 14;
+    CAPTUREREF: 15;
+    BALANCED: 16;
+    FRONTIER: 17;
+    ERROR: 18;
+}>;
+declare const TokToStr: string[];
+declare class Token {
+    constructor(tk: any, str: any);
+    type: any;
+    string: any;
+}
+declare class Lexer {
+    constructor(str: any);
+    input: any;
+    end: any;
+    last: number;
+    tokens: any[];
+    current: any;
+    caret: number;
+    Next(): void;
+    Lookahead(): any;
+    CheckNext(char: any): boolean;
+    IsEnd(): boolean;
+    IsLast(): boolean;
+    AddToken(type: any, info: any): void;
+    Sub(a: any, b: any): any;
+}
+declare const PAT: Readonly<{
+    ERROR: 0;
+    CHARS: 1;
+    QUANTIFIER: 2;
+    ANY: 3;
+    START: 4;
+    END: 5;
+    ESCAPED: 6;
+    CLASS: 7;
+    CAPTUREREF: 8;
+    BALANCED: 9;
+    SET: 10;
+    CAPTURE: 11;
+    FRONTIER: 12;
+    RANGE: 13;
+    INVERSESET: 14;
+    POSITION: 15;
+    WARNING: 16;
+    NOTE: 17;
+    SETCHARS: 18;
+}>;
+declare const PatToStr: string[];
+declare class Parser {
+    constructor(tokens: any);
+    tokens: any;
+    caret: number;
+    last: number;
+    end: any;
+    current: any;
+    nodes: any[];
+    levels: any[];
+    captures: any[];
+    rem: any;
+    Next(): void;
+    IsNextQuantifier(type: any): boolean;
+    IsNextRange(): boolean;
+    IsNextRPar(): boolean;
+    Add(node: any): void;
+    StartCapture(): void;
+    EndCapture(): void;
+    IsEnd(): boolean;
+    IsLast(): boolean;
+}
+declare class PatternObject {
+    constructor(type: any, parent: any, text: any);
+    type: any;
+    text: any;
+    children: any[];
+    Add(child: any): void;
+}
+declare let basediv: any;
+declare const PAT_QUANTIFIER_NAMES: Readonly<{
+    3: string[];
+    4: string[];
+    5: string[];
+    6: string[];
+}>;
+declare const PAT_CLASS_NAMES: Readonly<{
+    a: string[];
+    A: string[];
+    c: string[];
+    C: string[];
+    d: string[];
+    D: string[];
+    g: string[];
+    G: string[];
+    l: string[];
+    L: string[];
+    p: string[];
+    P: string[];
+    s: string[];
+    S: string[];
+    u: string[];
+    U: string[];
+    w: string[];
+    W: string[];
+    x: string[];
+    X: string[];
+    z: string[];
+    Z: string[];
+}>;
